@@ -1,6 +1,6 @@
 // caché de nodos
 const $body = $('body');
-const $clock = $('#clock'), $date = $('#date');
+const $clock = $('#clock'), $date = $('#date'), $date2 = $('#date2'), $date3 = $('#date3');
 const $inputs = $('.inputs'), $alarms = $('.alarms');
 const $formNewAlarm = $('#new-alarm'), 
 			$selHour = $('input[name="hour-config"]'), 
@@ -15,7 +15,10 @@ const urlRegEx = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$
 // formatos
 const formatTime = 'HH:mm:ss';
 const formatTimeAlarm = 'HH:mm';
-const formatDate = 'ddd, D MMMM YYYY';
+const formatDate = '([H]) YYYY-M-D MMMM';
+//const formatDate2 = '([M]) YYYY-M-D MMMM';
+const formatDate2 = '[(M) 1442-03-30 Rabiulawal]';
+const formatDate3 = 'dddd';
 
 // caché colores del body
 var bodyBackColor = '#008348', bodyFontColor = '#E2E2E2';
@@ -29,6 +32,8 @@ const interClock = setInterval(() => {
 // se llama cada minuto para pintar la fecha
 const interDate = setInterval(() => {
 	$date.html(moment().format(formatDate)) 
+	$date2.html(moment().format(formatDate2)) 
+	$date3.html(moment().format(formatDate3)) 
 }, 1000 * 60);
 // se llama cada 10 segundos para comprobar si hay alarma
 const interAlarm = setInterval(() => {
@@ -37,6 +42,8 @@ const interAlarm = setInterval(() => {
 }, 10000);
 $clock.html(moment().format(formatTime));
 $date.html(moment().format(formatDate));
+$date2.html(moment().format(formatDate2));
+$date3.html(moment().format(formatDate3));
 
 // comprueba si hay alarmas que lanzar en la fecha recibida
 function intervalHour(dateMoment, test){
@@ -123,7 +130,7 @@ $(document).on('click', '.alarm', function(e) {
 	printAllAlarms();
 });
 
-$('#info-page, #clock, #date, #close-config').click(hideConfig);
+$('#info-page, #clock, #date, #date2, #date3, #close-config').click(hideConfig);
 $('#open-config').click(showConfig);
 
 // muestra el panel de configuración
@@ -172,8 +179,12 @@ function resizeFontClock(){
 	const val = parseInt($rangeSizeClock.val());
 	const sizeClock = 23 / 100 * val;
 	const sizeDate = 6 / 100 * val;
+	const sizeDate2 = 6 / 100 * val;
+	const sizeDate3 = 12 / 100 * val;
 	$clock.css('font-size', sizeClock + 'vw');
 	$date.css('font-size', sizeDate + 'vw');
+	$date2.css('font-size', sizeDate2 + 'vw');
+	$date3.css('font-size', sizeDate3 + 'vw');
 	setSizeStorage(val)
 }
 $rangeSizeClock.off().change(resizeFontClock);

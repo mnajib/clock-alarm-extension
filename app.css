@@ -82,7 +82,7 @@ input[name="url-config"]{
     -webkit-transform: translate(-50%, -50%);
 }
 
-#clock, #date{
+#clock, #date, #date2, #date3{
 	text-align: center;
 }
 #clock{
@@ -91,9 +91,15 @@ input[name="url-config"]{
 #date{
 	font-size: 5.45vw;
 }
+#date2{
+	font-size: 5.45vw;
+}
+#date3{
+	font-size: 10.90vw;
+}
 
 .alarm{
-	cursor: pointer;
+    cursor: pointer;
     border: 1px solid #ff7600;
     border-radius: 2px;
     padding: 3px;

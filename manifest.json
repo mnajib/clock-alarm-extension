@@ -25,5 +25,5 @@
     "newtab": "index.html"
   },
   "optional_permissions": [ "notifications", "tabs" ],
-  "homepage_url": "https://github.com/lmfresneda/clock-alarm-extension"
+  "homepage_url": "https://github.com/mnajib/clock-alarm-extension"
 }
